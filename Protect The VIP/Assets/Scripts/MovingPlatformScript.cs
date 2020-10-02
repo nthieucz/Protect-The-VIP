@@ -43,6 +43,12 @@ public class MovingPlatformScript : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Projectile"))
+            toggleStop();
+    }
+
     public void toggleStop()
     {
         isStopped = !isStopped;
