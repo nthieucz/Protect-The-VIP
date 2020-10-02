@@ -6,7 +6,7 @@ public class VIPScript : MonoBehaviour
 {
     //Direction: Right = 1, Left = -1
     public int direction = 1;
-    private int hitDirection = 1;
+    public int hitDirection = 1;
     public float movespeed;
     public float jumpForce;
     private Rigidbody2D rb;
@@ -15,14 +15,22 @@ public class VIPScript : MonoBehaviour
     public Transform TopRightCheck;
     public Transform BottomLeftCheck;
     public Transform TopLeftCheck;
+    public LayerMask WhatAreObstacles;
 
+
+
+    //Check and timer garbage
     private float timer;
     private float timerStart = 1;
 
     private float jumpTimer;
     private float jumpTimerStart = 2;
 
-    public LayerMask WhatAreObstacles;
+    private bool wasAlerted;
+
+
+
+    
 
     public State state = State.Walk;
 
@@ -39,9 +47,16 @@ public class VIPScript : MonoBehaviour
 
     void Start()
     {
+        wasAlerted = false;
+
         rb = gameObject.GetComponent<Rigidbody2D>();
         jumpTimer = jumpTimerStart;
         
+    }
+
+    private void Update()
+    {
+
     }
 
     void FixedUpdate()
@@ -57,12 +72,16 @@ public class VIPScript : MonoBehaviour
                 Check(direction);
                 break;
             case State.Alert:
+                if (!wasAlerted)
+                {
+                    //Alert()
+                    wasAlerted = !wasAlerted;
+                }
                 timer += Time.deltaTime;
                 if (timer >= timerStart)
                 {
                     Redirect();
                 }
-
                 break;
             case State.ChangeDirection:
                 ChangeDirection();
@@ -106,6 +125,25 @@ public class VIPScript : MonoBehaviour
         
     }
 
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (state == State.Walk)
+        {
+
+            if (collision.gameObject.layer == 8)
+            {
+                if (collision.gameObject.transform.position.x > gameObject.transform.position.x)
+                {
+                    Hit(1);
+                }
+                else
+                {
+                    Hit(-1);
+                }
+            }
+        }
+    }
     public void Check(int direction)
     {
         float distance = 0.5f;
@@ -113,8 +151,7 @@ public class VIPScript : MonoBehaviour
         {
             RaycastHit2D bottomhit =  Physics2D.Raycast(BottomRightCheck.position, Vector2.right, distance, WhatAreObstacles);
             RaycastHit2D tophit = Physics2D.Raycast(TopRightCheck.position, Vector2.right, distance, WhatAreObstacles);
-            Debug.DrawRay(TopRightCheck.position, Vector2.right);
-
+            
             if (bottomhit.collider != null && tophit.collider != null)
             {
                 state = State.ChangeDirection;
@@ -143,13 +180,17 @@ public class VIPScript : MonoBehaviour
 
     public void Hit(int dir)
     {
-        Debug.Log("hit called with dir = " + dir);
         hitDirection = dir;
         state = State.Alert;
+        Debug.Log("hit called with dir = " + dir);
+
     }
 
     public void Redirect()
     {
+        wasAlerted = false;
+
+        timer = 0;
         if (direction == hitDirection)
         {
             state = State.ChangeDirection;
@@ -158,5 +199,10 @@ public class VIPScript : MonoBehaviour
         {
             state = State.Walk;
         }
+    }
+
+    public void Alert()
+    {
+
     }
 }

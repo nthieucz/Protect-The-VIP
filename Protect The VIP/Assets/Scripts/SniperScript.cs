@@ -58,6 +58,6 @@ public class SniperScript : MonoBehaviour
 
         GameObject projectile = Instantiate(projectilePrefab);
         projectile.transform.position = initial;
-        projectile.GetComponent<ProjectileScript>().direction = direction.normalized; ;
+        projectile.GetComponent<ProjectileScript>().direction = direction.normalized;
     }
 }

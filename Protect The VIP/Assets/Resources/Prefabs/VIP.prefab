@@ -161,6 +161,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: 1
+  hitDirection: 1
   movespeed: 2
   jumpForce: 300
   BottomRightCheck: {fileID: 7053476667711839764}
@@ -169,7 +170,11 @@ MonoBehaviour:
   TopLeftCheck: {fileID: 7053476669483362711}
   WhatAreObstacles:
     serializedVersion: 2
+    m_Bits: 512
+  Bullet:
+    serializedVersion: 2
     m_Bits: 256
+  hitRegistered: 0
   state: 0
 --- !u!50 &7053476667858751333
 Rigidbody2D:

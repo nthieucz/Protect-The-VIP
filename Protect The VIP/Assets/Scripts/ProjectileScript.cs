@@ -9,12 +9,19 @@ public class ProjectileScript : MonoBehaviour
     private float lifeSpan = 0;
     public float speed;
     public GameObject vip;
-   
+    public GameObject hitManager;
+    public GameObject gameobject;
+
+    private void Start()
+    {
+        vip = GameObject.Find("VIP");
+
+    }
     void Update()
     {
         gameObject.transform.Translate(direction * Time.deltaTime * speed);
         lifeSpan += Time.deltaTime;
-        if (lifeSpan > 2)
+        if (lifeSpan > 50)
         {
             Destroy(gameObject);
         }
@@ -24,10 +31,11 @@ public class ProjectileScript : MonoBehaviour
     {
         Vector3 diff = vip.transform.position - gameObject.transform.position;
         Destroy(gameObject);
-        Debug.Log("diff: " + diff.x + " / " + diff.y);
+        //Debug.Log("diff: " + diff.x + " / " + diff.y);
         //if (Mathf.Abs(diff.y) > 3) return;
         //if (Mathf.Abs(diff.x) > 10) return;
-        vip.GetComponent<VIPScript>().Hit(diff.x > 0 ? 1 : -1);
+
+
 
         
     }
