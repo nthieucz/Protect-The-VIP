@@ -143,6 +143,7 @@ public class VIPScript : MonoBehaviour
 
     public void Hit(int dir)
     {
+        Debug.Log("hit called with dir = " + dir);
         hitDirection = dir;
         state = State.Alert;
     }

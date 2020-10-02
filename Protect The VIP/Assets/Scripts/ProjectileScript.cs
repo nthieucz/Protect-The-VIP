@@ -8,6 +8,7 @@ public class ProjectileScript : MonoBehaviour
     public Vector3 direction;
     private float lifeSpan = 0;
     public float speed;
+    public GameObject vip;
    
     void Update()
     {
@@ -21,7 +22,13 @@ public class ProjectileScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-
+        Vector3 diff = vip.transform.position - gameObject.transform.position;
         Destroy(gameObject);
+        Debug.Log("diff: " + diff.x + " / " + diff.y);
+        //if (Mathf.Abs(diff.y) > 3) return;
+        //if (Mathf.Abs(diff.x) > 10) return;
+        vip.GetComponent<VIPScript>().Hit(diff.x > 0 ? 1 : -1);
+
+        
     }
 }

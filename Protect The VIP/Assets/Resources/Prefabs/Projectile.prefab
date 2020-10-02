@@ -98,6 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   direction: {x: 0, y: 0, z: 0}
   speed: 10
+  vip: {fileID: 7053476667858751335, guid: 6c59357964bfff14d8c1aacfc30576c9, type: 3}
 --- !u!61 &-1767899578898525055
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -136,7 +137,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.0001
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0
