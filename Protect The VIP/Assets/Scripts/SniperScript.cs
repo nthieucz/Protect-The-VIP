@@ -7,20 +7,13 @@ public class SniperScript : MonoBehaviour
     public GameObject projectilePrefab;
     public GameObject destructiblePrefab;
 
-    Vector3 currentPos;
-
-    private void Start()
-    {
-        currentPos = new Vector3(0, 0, 0);
-    }
-
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
             Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             worldPosition.z = 0;
-            this.shoot(currentPos, worldPosition);
+            this.shoot(gameObject.transform.position, worldPosition);
         }
 
         if (Input.GetMouseButtonDown(1))
