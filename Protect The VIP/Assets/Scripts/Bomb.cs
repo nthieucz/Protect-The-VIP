@@ -5,6 +5,7 @@ using UnityEngine;
 public class Bomb : MonoBehaviour
 {
     public GameObject explosion;
+    public GameObject explosionEffect;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +18,7 @@ public class Bomb : MonoBehaviour
         if (Input.GetButton("Jump"))
         {
             Instantiate(explosion, transform.position, Quaternion.identity);
+            Instantiate(explosionEffect, transform.position, Quaternion.identity);
             gameObject.SetActive(false);
         }
     }
