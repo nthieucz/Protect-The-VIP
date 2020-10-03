@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4286584929996162181}
   - component: {fileID: 8165033438442975268}
   - component: {fileID: 4478900871855307056}
+  - component: {fileID: 752298388}
   m_Layer: 0
   m_Name: Sniper Rifle
   m_TagString: Untagged
@@ -26,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2314925601776496664}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.175, y: -0.062, z: 0}
+  m_LocalPosition: {x: 0.14, y: 0.08, z: 0}
   m_LocalScale: {x: 3.6554, y: 4.0438, z: 1}
   m_Children: []
   m_Father: {fileID: 7051438890189861400}
@@ -102,6 +103,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &752298388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2314925601776496664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdf3b6eadab6723498b2860f94fd9f45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
 --- !u!1 &7051438890189861397
 GameObject:
   m_ObjectHideFlags: 0
@@ -202,6 +216,7 @@ MonoBehaviour:
   destructiblePrefab: {fileID: 5956186210964243589, guid: bc6c705a044ed9947a48ffe2ce3cb465,
     type: 3}
   physicsPrefab: {fileID: 0}
+  shootAnimator: {fileID: 8165033438442975268}
   pos1: {x: 0, y: 0, z: 0}
   pos2: {x: 0, y: 0, z: 0}
   pos3: {x: 0, y: 0, z: 0}

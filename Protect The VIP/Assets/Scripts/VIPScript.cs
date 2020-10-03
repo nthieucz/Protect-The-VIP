@@ -105,7 +105,7 @@ public class VIPScript : MonoBehaviour
                 state = State.Walk;
                 break;
             case State.Jump:
-                playerAnimator.SetBool("isJumping", true);
+                
                 Jump();
                 state = State.Walk;
                 break;
@@ -136,6 +136,7 @@ public class VIPScript : MonoBehaviour
 
     public void Jump()
     {
+        playerAnimator.SetBool("isJumping", true);
         if (jumpTimer >= jumpTimerStart)
         {
             rb.AddForce(new Vector2(0, jumpForce));
