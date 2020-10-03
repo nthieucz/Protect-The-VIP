@@ -17,6 +17,8 @@ public class VIPScript : MonoBehaviour
     public Transform TopLeftCheck;
     public LayerMask WhatAreObstacles;
 
+    public Animator playerAnimator;
+    public Animator alertAnimator;
 
 
     //Check and timer garbage
@@ -24,7 +26,9 @@ public class VIPScript : MonoBehaviour
     private float timerStart = 1;
 
     private float jumpTimer;
-    private float jumpTimerStart = 2;
+    private float jumpTimerStart = 1;
+
+
 
     private bool wasAlerted;
 
@@ -63,6 +67,10 @@ public class VIPScript : MonoBehaviour
     {
 
         jumpTimer += Time.deltaTime;
+        if (jumpTimer > jumpTimerStart)
+        {
+            playerAnimator.SetBool("isJumping", false);
+        }
 
         switch (state)
         {
@@ -74,13 +82,22 @@ public class VIPScript : MonoBehaviour
             case State.Alert:
                 if (!wasAlerted)
                 {
+                    Stop();
                     //Alert()
+                    playerAnimator.SetBool("isAlerted", true);
+                    alertAnimator.SetBool("Alerted", true);
                     wasAlerted = !wasAlerted;
                 }
                 timer += Time.deltaTime;
+                if (timer>= timerStart*2 / 3)
+                {
+                    alertAnimator.SetBool("Alerted", false);
+                }
                 if (timer >= timerStart)
                 {
                     Redirect();
+                    playerAnimator.SetBool("isAlerted", false);
+
                 }
                 break;
             case State.ChangeDirection:
@@ -88,6 +105,7 @@ public class VIPScript : MonoBehaviour
                 state = State.Walk;
                 break;
             case State.Jump:
+                playerAnimator.SetBool("isJumping", true);
                 Jump();
                 state = State.Walk;
                 break;
@@ -113,6 +131,7 @@ public class VIPScript : MonoBehaviour
     public void ChangeDirection()
     {
         direction = -direction;
+        transform.Rotate(Vector3.up * 180);
     }
 
     public void Jump()
@@ -128,8 +147,7 @@ public class VIPScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (state == State.Walk)
-        {
+
 
             if (collision.gameObject.layer == 8)
             {
@@ -142,7 +160,7 @@ public class VIPScript : MonoBehaviour
                     Hit(-1);
                 }
             }
-        }
+        
     }
     public void Check(int direction)
     {
@@ -164,8 +182,8 @@ public class VIPScript : MonoBehaviour
         }
         else if (direction < 0)
         {
-            RaycastHit2D bottomhit = Physics2D.Raycast(BottomLeftCheck.position, Vector2.left, distance, WhatAreObstacles);
-            RaycastHit2D tophit = Physics2D.Raycast(TopLeftCheck.position, Vector2.left, distance, WhatAreObstacles);
+            RaycastHit2D bottomhit = Physics2D.Raycast(BottomRightCheck.position, Vector2.left, distance, WhatAreObstacles);
+            RaycastHit2D tophit = Physics2D.Raycast(TopRightCheck.position, Vector2.left, distance, WhatAreObstacles);
 
             if (bottomhit.collider != null && tophit.collider != null)
             {
@@ -184,6 +202,10 @@ public class VIPScript : MonoBehaviour
         state = State.Alert;
         Debug.Log("hit called with dir = " + dir);
 
+    }
+    public void Stop()
+    {
+        rb.velocity = new Vector2(0, rb.velocity.y);
     }
 
     public void Redirect()
