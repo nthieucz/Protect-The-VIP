@@ -21,22 +21,16 @@ public class ProjectileScript : MonoBehaviour
     {
         gameObject.transform.Translate(direction * Time.deltaTime * speed);
         lifeSpan += Time.deltaTime;
-        if (lifeSpan > 50)
+        if (lifeSpan > 2)
         {
             Destroy(gameObject);
         }
     }
 
+
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Vector3 diff = vip.transform.position - gameObject.transform.position;
         Destroy(gameObject);
-        //Debug.Log("diff: " + diff.x + " / " + diff.y);
-        //if (Mathf.Abs(diff.y) > 3) return;
-        //if (Mathf.Abs(diff.x) > 10) return;
-
-
-
-        
     }
 }

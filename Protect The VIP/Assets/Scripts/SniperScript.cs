@@ -6,6 +6,7 @@ public class SniperScript : MonoBehaviour
 {
     public GameObject projectilePrefab;
     public GameObject destructiblePrefab;
+    public GameObject physicsPrefab;
 
     public Vector3 pos1;
     public Vector3 pos2;
@@ -15,6 +16,7 @@ public class SniperScript : MonoBehaviour
 
     void Update()
     {
+
         if (Input.GetMouseButtonDown(0))
         {
             Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -28,6 +30,14 @@ public class SniperScript : MonoBehaviour
             worldPosition.z = 0;
             GameObject newDestructible = Instantiate(destructiblePrefab);
             newDestructible.transform.position = worldPosition;
+        }
+
+        if (Input.GetMouseButtonDown(2))
+        {
+            Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            worldPosition.z = 0;
+            GameObject newPhysics = Instantiate(physicsPrefab);
+            newPhysics.transform.position = worldPosition;
         }
 
         if (Input.GetKeyDown("1"))
