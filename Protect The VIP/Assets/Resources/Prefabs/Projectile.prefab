@@ -97,13 +97,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: {x: 0, y: 0, z: 0}
-  speed: 30
+  speed: 20
   vip: {fileID: 7053476667858751335, guid: 6c59357964bfff14d8c1aacfc30576c9, type: 3}
-  hitManager: {fileID: 8049706707275855505, guid: 4bd0ba97339bd5c42a0633d67c6a8b31,
-    type: 3}
   gameobject: {fileID: 7088941489265818790, guid: e237aa8bc50c65e4a97cd1927855b513,
     type: 3}
-  isExplosive: 1
 --- !u!61 &-1767899578898525055
 BoxCollider2D:
   m_ObjectHideFlags: 0
