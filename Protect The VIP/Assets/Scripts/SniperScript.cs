@@ -8,6 +8,8 @@ public class SniperScript : MonoBehaviour
     public GameObject destructiblePrefab;
     public GameObject physicsPrefab;
     public Animator shootAnimator;
+    public GameObject rifle;
+    public GameObject shootPosition;
 
     public Vector3 pos1;
     public Vector3 pos2;
@@ -68,8 +70,7 @@ public class SniperScript : MonoBehaviour
         shootAnimator.Play("Shoot");
         Vector3 direction = final - initial;
 
-        GameObject projectile = Instantiate(projectilePrefab);
+        GameObject projectile = Instantiate(projectilePrefab, shootPosition.transform.position, rifle.transform.rotation);
         projectile.transform.position = initial;
-        projectile.GetComponent<ProjectileScript>().direction = direction.normalized;
     }
 }

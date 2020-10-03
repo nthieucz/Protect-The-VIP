@@ -5,7 +5,6 @@ using UnityEngine;
 public class ProjectileScript : MonoBehaviour
 {
 
-    public Vector3 direction;
     private float lifeSpan = 0;
     public float speed;
     public GameObject vip;
@@ -18,7 +17,7 @@ public class ProjectileScript : MonoBehaviour
     }
     void Update()
     {
-        gameObject.transform.Translate(direction * Time.deltaTime * speed);
+        gameObject.transform.Translate(Vector3.right * Time.deltaTime * speed);
         lifeSpan += Time.deltaTime;
         if (lifeSpan > 2)
         {
