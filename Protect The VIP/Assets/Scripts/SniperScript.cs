@@ -7,6 +7,7 @@ public class SniperScript : MonoBehaviour
     public GameObject projectilePrefab;
     public GameObject destructiblePrefab;
     public GameObject physicsPrefab;
+    public Animator shootAnimator;
 
     public Vector3 pos1;
     public Vector3 pos2;
@@ -64,6 +65,7 @@ public class SniperScript : MonoBehaviour
 
     void shoot(Vector3 initial, Vector3 final)
     {
+        shootAnimator.Play("Shoot");
         Vector3 direction = final - initial;
 
         GameObject projectile = Instantiate(projectilePrefab);
