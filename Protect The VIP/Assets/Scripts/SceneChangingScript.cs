@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class SceneChangingScript : MonoBehaviour
 {
+
+    public GameObject nextLevelPanel;
+
     void Update()
     {
         if (Input.GetKeyDown("r"))
@@ -16,6 +19,13 @@ public class SceneChangingScript : MonoBehaviour
     public void restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        nextLevelPanel.SetActive(false);
+    }
+
+    public void nextLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+        nextLevelPanel.SetActive(false);
     }
 
     public void setLevel(int level)
@@ -25,5 +35,11 @@ public class SceneChangingScript : MonoBehaviour
         {
             Destroy(GameObject.Find("SceneManagingCanvas"));
         }
+        nextLevelPanel.SetActive(false);
+    }
+
+    public void openPanel()
+    {
+        nextLevelPanel.SetActive(true);
     }
 }

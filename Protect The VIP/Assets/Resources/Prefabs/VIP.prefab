@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 1973129998}
   m_Layer: 0
   m_Name: VIP
-  m_TagString: Untagged
+  m_TagString: Vip
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
