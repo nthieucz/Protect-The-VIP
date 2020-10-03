@@ -9,7 +9,6 @@ public class ProjectileScript : MonoBehaviour
     private float lifeSpan = 0;
     public float speed;
     public GameObject vip;
-    public GameObject hitManager;
     public GameObject gameobject;
 
     private void Start()
