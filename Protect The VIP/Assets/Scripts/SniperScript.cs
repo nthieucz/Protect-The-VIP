@@ -10,6 +10,8 @@ public class SniperScript : MonoBehaviour
     public Animator shootAnimator;
     public GameObject rifle;
     public GameObject shootPosition;
+    public AudioClip[] shootSound;
+    private SFXManager sfxManager;
 
     public Vector3 pos1;
     public Vector3 pos2;
@@ -17,6 +19,10 @@ public class SniperScript : MonoBehaviour
     public Vector3 pos4;
     public Vector3 pos5;
 
+    private void Start()
+    {
+        sfxManager = GameObject.Find("SFX Manager").GetComponent<SFXManager>();
+    }
     void Update()
     {
 
@@ -69,6 +75,7 @@ public class SniperScript : MonoBehaviour
     {
         shootAnimator.Play("Shoot");
         Vector3 direction = final - initial;
+        sfxManager.playAudio(shootSound[Random.Range(0, shootSound.Length)]);
 
         GameObject projectile = Instantiate(projectilePrefab, shootPosition.transform.position, rifle.transform.rotation);
         projectile.transform.position = initial;

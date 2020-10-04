@@ -146,3 +146,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destroyEffect: {fileID: 779619708632725130, guid: dc4a969e69b329c4591969ebc951eb5f,
     type: 3}
+  audio: {fileID: 8300000, guid: f53949475eb2aa34daac180318b411a5, type: 3}

@@ -264,6 +264,10 @@ MonoBehaviour:
   shootAnimator: {fileID: 8165033438442975268}
   rifle: {fileID: 2314925601776496664}
   shootPosition: {fileID: 1753883000}
+  shootSound:
+  - {fileID: 8300000, guid: 6507a07676a2a2441ac15c72e7dc4cfb, type: 3}
+  - {fileID: 8300000, guid: 138696991d1ed9846b7cac0e9e7b15c8, type: 3}
+  - {fileID: 8300000, guid: da5f68a2bdfb65a4ea9bcc26a860c343, type: 3}
   pos1: {x: 0, y: 0, z: 0}
   pos2: {x: 0, y: 0, z: 0}
   pos3: {x: 0, y: 0, z: 0}
