@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4502915969831379269}
   - component: {fileID: 4502915969831379268}
   - component: {fileID: 5761174782193317456}
+  - component: {fileID: 1030260484339967968}
   m_Layer: 0
   m_Name: Destructible Rope
   m_TagString: Untagged
@@ -122,15 +123,15 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.1
   m_LinearDrag: 0
   m_AngularDrag: 0
-  m_GravityScale: 0
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 7
+  m_Constraints: 0
 --- !u!114 &5761174782193317456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,3 +147,27 @@ MonoBehaviour:
   destroyEffect: {fileID: 1738923271870782597, guid: 945abacfe13a2714f9ab98788f9e0a32,
     type: 3}
   audio: {fileID: 8300000, guid: f53949475eb2aa34daac180318b411a5, type: 3}
+--- !u!233 &1030260484339967968
+HingeJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4502915969831379265}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_EnableCollision: 0
+  m_ConnectedRigidBody: {fileID: 0}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_AutoConfigureConnectedAnchor: 1
+  m_Anchor: {x: 0, y: 0.62}
+  m_ConnectedAnchor: {x: 3.72, y: 3.9699998}
+  m_UseMotor: 0
+  m_Motor:
+    m_MotorSpeed: 0
+    m_MaximumMotorForce: 10000
+  m_UseLimits: 0
+  m_AngleLimits:
+    m_LowerAngle: 0
+    m_UpperAngle: 359
